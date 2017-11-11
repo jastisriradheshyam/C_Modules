@@ -51,39 +51,9 @@ int *dup_rem(int *arr,int *no)
 
 int *dup_rem_sort(int *arr,int *no)
 {
-    int i,j,k=0;
-    int n = *no;
-    short *sup = calloc(n,sizeof(short));
-    int *anarr = calloc(n,sizeof(int));
-    for(i=0;i<n;i++)
-    {
-     if(sup[i]!=1)
-     {
-      for(j=i+1;j<n;j++)
-      {
-       if(arr[i]==arr[j])
-       {
-        sup[i]=1;
-        sup[j]=1;
-       }
-      }
-     }
-     else{continue;}
-    }
-    for(i=0;i<n;i++)
-    {
-     if(sup[i]==0)
-     {
-      anarr[k]=arr[i];
-      k++;
-     }
-    }
-
-    free(sup);
-    *no = k;
-    qsort(anarr,k,sizeof(int),compare);
-    free(arr);
-    return anarr;
+    arr = dup_rem(arr,no);
+    qsort(arr,*no,sizeof(int),compare);
+    return arr;
 }
 
 char *char_dup_rem(char *arr,int *no)
